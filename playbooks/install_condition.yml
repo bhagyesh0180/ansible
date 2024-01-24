@@ -1,0 +1,17 @@
+-
+ name: this will install apps based on OS
+ hosts: servers
+ become: yes
+ tasks:  
+  - name: install docker
+    apt:
+      name: docker.io
+      state: latest
+      update_cache: 'yes'
+    tags: install
+    when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+  - name : install awscli
+    apt:
+      name: awscli
+      state: latest
+    when: ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'CentOS'

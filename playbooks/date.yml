@@ -1,0 +1,6 @@
+-
+ name: this will show date in every server 
+ hosts: servers
+ tasks: 
+  - name: show date
+    command: date
